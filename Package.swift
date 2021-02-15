@@ -24,7 +24,11 @@ let package = Package(
 
         .target(
             name: "ReactiveCocoa",
-            dependencies: ["ReactiveSwift", "ReactiveCocoaObjC"],
+            dependencies: [
+              .product(name: "ReactiveSwiftDynamic",
+                       package: "ReactiveSwift"
+              ),
+              "ReactiveCocoaObjC"],
             path: "ReactiveCocoa"),
 
         .target(
