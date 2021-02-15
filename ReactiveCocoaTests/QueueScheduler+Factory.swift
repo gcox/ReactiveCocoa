@@ -12,7 +12,9 @@ extension QueueScheduler {
 		if #available(OSX 10.10, iOS 8.0, *) {
 			return QueueScheduler()
 		} else {
-			return QueueScheduler(queue: DispatchQueue(label: label))
+      return QueueScheduler(qos: .default,
+                            name: label,
+                            targeting: DispatchQueue(label: label))
 		}
 		#endif
 	}

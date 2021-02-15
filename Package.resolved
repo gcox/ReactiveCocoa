@@ -21,11 +21,11 @@
       },
       {
         "package": "ReactiveSwift",
-        "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift",
+        "repositoryURL": "https://github.com/gcox/ReactiveSwift",
         "state": {
-          "branch": null,
-          "revision": "3f4351d04115fd8797802d9b2d17b812cd761602",
-          "version": "6.3.0"
+          "branch": "dynamic-lib",
+          "revision": "daf747d846fd2b81719843fcfe913123423a10fc",
+          "version": null
         }
       }
     ]
