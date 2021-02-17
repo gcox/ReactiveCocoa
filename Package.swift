@@ -3,47 +3,51 @@
 import PackageDescription
 
 let package = Package(
-    name: "ReactiveCocoa",
-    platforms: [
-        .macOS(.v10_10), .iOS(.v9), .tvOS(.v9), .watchOS(.v2)
-    ],
-    products: [
-        .library(name: "ReactiveCocoa", targets: ["ReactiveCocoa"]),
-        .library(name: "ReactiveCocoaDynamic", type: .dynamic, targets: ["ReactiveCocoa"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/gcox/ReactiveSwift", .branch("dynamic-lib")),
-        .package(url: "https://github.com/Quick/Quick.git", from: "3.1.2"),
-        .package(url: "https://github.com/Quick/Nimble.git", from: "9.0.0"),
-    ],
-    targets: [
-        .target(
-            name: "ReactiveCocoaObjC",
-            dependencies: [],
-            path: "ReactiveCocoaObjC"),
+  name: "ReactiveCocoa",
+  platforms: [
+    .macOS(.v10_10), .iOS(.v9), .tvOS(.v9), .watchOS(.v2)
+  ],
+  products: [
+    .library(name: "ReactiveCocoa", targets: ["ReactiveCocoa"]),
+    .library(name: "ReactiveCocoaDynamic", type: .dynamic, targets: ["ReactiveCocoa"])
+  ],
+  dependencies: [
+    .package(url: "https://github.com/gcox/ReactiveSwift", .branch("dynamic-lib")),
+    .package(url: "https://github.com/Quick/Quick.git", from: "3.1.2"),
+    .package(url: "https://github.com/Quick/Nimble.git", from: "9.0.0"),
+  ],
+  targets: [
+    .target(
+      name: "ReactiveCocoaObjC",
+      dependencies: [],
+      path: "ReactiveCocoaObjC"
+    ),
 
-        .target(
-            name: "ReactiveCocoa",
-            dependencies: [
-              .product(name: "ReactiveSwiftDynamic",
-                       package: "ReactiveSwift"
-              ),
-              "ReactiveCocoaObjC"],
-            path: "ReactiveCocoa"),
+    .target(
+      name: "ReactiveCocoa",
+      dependencies: [
+        .product(name: "ReactiveSwiftDynamic",
+                 package: "ReactiveSwift"),
+        "ReactiveCocoaObjC"
+      ],
+      path: "ReactiveCocoa"
+    ),
 
-        .target(
-            name: "ReactiveCocoaObjCTestSupport",
-            path: "ReactiveCocoaObjCTestSupport"),
+    .target(
+      name: "ReactiveCocoaObjCTestSupport",
+      path: "ReactiveCocoaObjCTestSupport"
+    ),
 
-        .testTarget(
-            name: "ReactiveCocoaTests",
-            dependencies: [
-                "ReactiveCocoa",
-                "ReactiveCocoaObjCTestSupport",
-                "Quick",
-                "Nimble"
-            ],
-            path: "ReactiveCocoaTests"),
-    ],
-    swiftLanguageVersions: [.v5]    
+    .testTarget(
+      name: "ReactiveCocoaTests",
+      dependencies: [
+        "ReactiveCocoa",
+        "ReactiveCocoaObjCTestSupport",
+        "Quick",
+        "Nimble"
+      ],
+      path: "ReactiveCocoaTests"
+    ),
+  ],
+  swiftLanguageVersions: [.v5]
 )
