@@ -357,7 +357,7 @@ fileprivate class KeyValueObservingSwift4SpecConfiguration: QuickConfiguration {
 					expect(ids) == [tokenId]
 
 					token = nil
-					
+
 					expect(ids) == [tokenId, null]
 					expect(object.weakTarget).to(beNil())
 				}
@@ -413,7 +413,7 @@ fileprivate class KeyValueObservingSwift4SpecConfiguration: QuickConfiguration {
 					innerObject = ObservableObject()
 					parentObject.rac_weakObject = innerObject
 					expect(values) == [1, 0]
-					
+
 					innerObject?.rac_value = 10
 					expect(values) == [1, 0, 10]
 				}
@@ -535,10 +535,7 @@ fileprivate class KeyValueObservingSwift4SpecConfiguration: QuickConfiguration {
 
 					testObject.rac_value = 2
 
-					expect(atomicCounter).toEventually(
-            equal(Int64(numIterations * 2)),
-            timeout: .seconds(30)
-          )
+					expect(atomicCounter).toEventually(equal(Int64(numIterations * 2)), timeout: .seconds(30))
 				}
 
 				// ReactiveCocoa/ReactiveCocoa#1122
@@ -596,7 +593,7 @@ fileprivate class KeyValueObservingSwift4SpecConfiguration: QuickConfiguration {
 
 					iterationQueue.resume()
 
-          waitUntil(timeout: .seconds(3)) { done in
+					waitUntil(timeout: .seconds(3)) { done in
 						iterationQueue.async(flags: .barrier, execute: done)
 					}
 				}

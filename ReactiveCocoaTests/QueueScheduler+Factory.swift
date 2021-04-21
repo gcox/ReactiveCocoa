@@ -6,16 +6,12 @@ extension QueueScheduler {
 		let file = URL(string: file)?.lastPathComponent ?? "<unknown>"
 		let label = "reactiveswift:\(file):\(line)"
 
-		#if targetEnvironment(macCatalyst)
-		return QueueScheduler()
-		#else
 		if #available(OSX 10.10, iOS 8.0, *) {
-			return QueueScheduler()
+			return QueueScheduler(name: label)
 		} else {
       return QueueScheduler(qos: .default,
                             name: label,
                             targeting: DispatchQueue(label: label))
 		}
-		#endif
 	}
 }
